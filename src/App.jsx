@@ -1,8 +1,14 @@
-// src/App.jsx
+import { useState, useEffect } from "react";
+import Home from "./components/Home/Home";
+import "./App.css";
 
 const App = () =>
 {
-  return <h1>Hello world!</h1>;
+  return (
+    <>
+      <Home />
+    </>
+  )
 };
 
 export default App;

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import TrackList from '../TrackList/TrackList';
 import NowPlaying from '../PlayingTrack/NowPlaying';
-import TrackForm from '../TrackForm/TrackForm';
-import { getAllTracks, getTrack } from '../../../lib/api';
+import { getTrack } from '../../../lib/api';
 
 function Home({setEditMode, setTrackId, handleShowForm, listAllTracks, playingTrack, setPlayingTrack, tracks})
 {

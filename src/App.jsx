@@ -3,7 +3,7 @@ import Home from "./components/Home/Home";
 import "./App.css";
 import NewTrackBtn from "./components/NewTrackBtn/NewTrackBtn";
 import TrackForm from "./components/TrackForm/TrackForm";
-import { getAllTracks, getTrack } from "../lib/api";
+import { getAllTracks } from "../lib/api";
 
 
 

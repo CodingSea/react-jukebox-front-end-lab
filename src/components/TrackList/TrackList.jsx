@@ -29,7 +29,7 @@ function TrackList({ tracks, listAllTracks })
                             {
                                 return (
                                     <div key={ index } className='trackCard'>
-                                        <p>Title: { track.title } by <span style={ { color: "red" } }>{ track.artist }</span></p>
+                                        <p>{ track.title } by <span style={ { color: "red" } }>{ track.artist }</span></p>
                                         <ul>
                                             <li><button>Play</button></li>
                                             <li><button>Edit</button></li>

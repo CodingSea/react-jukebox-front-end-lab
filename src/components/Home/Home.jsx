@@ -27,7 +27,7 @@ function Home()
             {
                 isFormShown
                 ?
-                <TrackForm listAllTracks={listAllTracks} />
+                <TrackForm listAllTracks={listAllTracks} setIsFormShown={setIsFormShown} />
                 :
                 null
             }

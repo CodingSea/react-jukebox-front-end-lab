@@ -46,6 +46,8 @@
   background-color: rgb(48, 48, 48);
   border-radius: 1em;
   padding: 2em;
+
+  max-width: 60em;
 }
 
 .trackList
@@ -53,6 +55,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
+  justify-content: space-between;
 }
 
 .trackCard

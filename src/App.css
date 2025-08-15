@@ -74,10 +74,19 @@
 
 .playingCard
 {
-  background-color: rgb(61, 61, 61);
+  background-color: rgb(48, 48, 48);
   border-radius: 1em;
   padding: 1em;
   text-align: start;
   width: 40em;
   margin: 1em auto;
+}
+
+form
+{
+  margin: 1em auto 1em auto;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
 }

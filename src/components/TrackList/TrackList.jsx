@@ -1,14 +1,20 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { SyncLoader } from 'react-spinners';
-import { getAllTracks, deleteTrack } from '../../../lib/api';
+import { deleteTrack } from '../../../lib/api';
 
-function TrackList({ tracks, setTracks })
+function TrackList({ tracks, listAllTracks })
 {
     useEffect(() =>
     {
-        getAllTracks(tracks, setTracks);
+        listAllTracks();
     }, []);
+
+    async function deleteTrackAndRefresh(id)
+    {
+        await deleteTrack(id);
+        listAllTracks();
+    }
 
     return (
         <>
@@ -22,12 +28,12 @@ function TrackList({ tracks, setTracks })
                             tracks.map((track, index) => 
                             {
                                 return (
-                                    <div key={index} className='trackCard'>
+                                    <div key={ index } className='trackCard'>
                                         <p>Title: { track.title } by <span style={ { color: "red" } }>{ track.artist }</span></p>
                                         <ul>
                                             <li><button>Play</button></li>
                                             <li><button>Edit</button></li>
-                                            <li><button onClick={() => deleteTrack(track._id)}>Delete</button></li>
+                                            <li><button onClick={ () => deleteTrackAndRefresh(track._id) }>Delete</button></li>
                                         </ul>
                                     </div>
                                 )

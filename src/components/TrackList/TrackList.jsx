@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { SyncLoader } from 'react-spinners';
 import { deleteTrack } from '../../../lib/api';
 
-function TrackList({ tracks, listAllTracks, handleShowForm, setEditMode, setTrackId })
+function TrackList({ tracks, listAllTracks, handleShowForm, setEditMode, setTrackId, handlePlayigTrack })
 {
     useEffect(() =>
     {
@@ -31,7 +31,7 @@ function TrackList({ tracks, listAllTracks, handleShowForm, setEditMode, setTrac
                                     <div key={ index } className='trackCard'>
                                         <p>{ track.title } by <span style={ { color: "red" } }>{ track.artist }</span></p>
                                         <ul>
-                                            <li><button>Play</button></li>
+                                            <li><button onClick={() => handlePlayigTrack(track._id)}>Play</button></li>
                                             <li><button onClick={() => { setTrackId(track._id); handleShowForm(); setEditMode(true);}}>Edit</button></li>
                                             <li><button onClick={ () => deleteTrackAndRefresh(track._id) }>Delete</button></li>
                                         </ul>

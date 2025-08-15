@@ -1,9 +1,9 @@
 import React from 'react'
 
-function NewTrackBtn({ handleShowForm })
+function NewTrackBtn({ handleShowForm, setEditMode })
 {
     return (
-        <button style={ { background: "darkorange", margin: "1em" } } onClick={handleShowForm}>Add New Track</button>
+        <button style={ { background: "darkorange", margin: "1em" } } onClick={() => {setEditMode(false); handleShowForm();}}>Add New Track</button>
     )
 }
 

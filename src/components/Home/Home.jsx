@@ -7,8 +7,10 @@ import { getAllTracks } from '../../../lib/api';
 
 function Home()
 {
-    const [tracks, setTracks] = useState({});
+    const [tracks, setTracks] = useState([]);
     const [isFormShown, setIsFormShown] = useState(false);
+    const [editMode, setEditMode] = useState(false);
+    const [trackId, setTrackId] = useState({});
     
     function handleShowForm()
     {
@@ -23,15 +25,15 @@ function Home()
 
     return (
         <>
-            <NewTrackBtn handleShowForm={handleShowForm} />
+            <NewTrackBtn handleShowForm={handleShowForm} setEditMode={setEditMode} />
             {
                 isFormShown
                 ?
-                <TrackForm listAllTracks={listAllTracks} setIsFormShown={setIsFormShown} />
+                <TrackForm listAllTracks={listAllTracks} setIsFormShown={setIsFormShown} editMode={editMode} trackId={trackId} />
                 :
                 null
             }
-            <TrackList tracks={tracks} listAllTracks={listAllTracks} />
+            <TrackList tracks={tracks} listAllTracks={listAllTracks} handleShowForm={handleShowForm} setEditMode={setEditMode} setTrackId={setTrackId} />
             <PlayingTrack />
         </>
     )

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { createTrack } from '../../../lib/api';
+import React, { useEffect, useState } from 'react'
+import { createTrack, getTrack, updateTrack } from '../../../lib/api';
 
-function TrackForm({ listAllTracks, setIsFormShown })
+function TrackForm({ listAllTracks, setIsFormShown, editMode, trackId })
 {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -17,7 +17,7 @@ function TrackForm({ listAllTracks, setIsFormShown })
         setFormData({ ...formData, [event.target.name]: event.target.value });
     }
 
-    async function handleTrackSubmittion(event)
+    async function handleCreateTrack(event)
     {
         event.preventDefault();
 
@@ -42,16 +42,69 @@ function TrackForm({ listAllTracks, setIsFormShown })
         listAllTracks();
     }
 
+    async function handleEditTrack(event)
+    {
+        event.preventDefault();
+
+        if (isSubmitting) return;
+        setIsSubmitting(true);
+
+        const response = await updateTrack(trackId ,formData);
+        if (response.status === 200)
+        {
+            setIsFormShown(false);
+        }
+
+        setIsSubmitting(false);
+
+        listAllTracks();
+    }
+
+    async function getTrackDataFromTrackId()
+    {
+        const selectedTrack = await getTrack(trackId);
+        setFormData(
+            {
+                title: selectedTrack.title,
+                artist: selectedTrack.artist
+            }
+        )
+    }
+
+    useEffect(() =>
+    {
+        if(editMode)
+        {
+            getTrackDataFromTrackId();
+        }
+    }, [])
+
     return (
-        <form onSubmit={ handleTrackSubmittion }>
-            <label>Title: </label>
-            <input name='title' type='text' onChange={handleChange} value={formData.title} />
+        <>
+            {
+                editMode
+                    ?
+                    <form onSubmit={ handleEditTrack }>
+                        <label>Title: </label>
+                        <input name='title' type='text' onChange={ handleChange } value={ formData.title } />
 
-            <label>Artist: </label>
-            <input name='artist' type='text' onChange={handleChange} value={formData.artist} />
+                        <label>Artist: </label>
+                        <input name='artist' type='text' onChange={ handleChange } value={ formData.artist } />
 
-            <button type='submit' style={ { border: "1px solid red" } }>Create Track</button>
-        </form>
+                        <button type='submit' style={ { border: "1px solid red" } }>Update Track</button>
+                    </form>
+                    :
+                    <form onSubmit={ handleCreateTrack }>
+                        <label>Title: </label>
+                        <input name='title' type='text' onChange={ handleChange } value={ formData.title } />
+
+                        <label>Artist: </label>
+                        <input name='artist' type='text' onChange={ handleChange } value={ formData.artist } />
+
+                        <button type='submit' style={ { border: "1px solid red" } }>Create Track</button>
+                    </form>
+            }
+        </>
     )
 }
 

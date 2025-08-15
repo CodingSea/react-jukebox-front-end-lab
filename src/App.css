@@ -40,3 +40,33 @@
 .read-the-docs {
   color: #888;
 }
+
+.trackContainer
+{
+  background-color: rgb(48, 48, 48);
+  border-radius: 1em;
+  padding: 2em;
+}
+
+.trackList
+{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.trackCard
+{
+  background-color: rgb(61, 61, 61);
+  border-radius: 1em;
+  padding: 1em;
+}
+
+
+.trackCard ul
+{
+  list-style-type: none;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5em;
+}

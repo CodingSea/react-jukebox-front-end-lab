@@ -8,7 +8,6 @@ function Home()
 
     return (
         <>
-            <div>Home</div>
             <TrackList tracks={ tracks } setTracks={ setTracks } />
         </>
     )

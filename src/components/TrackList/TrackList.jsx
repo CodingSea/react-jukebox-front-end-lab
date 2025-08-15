@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { SyncLoader } from 'react-spinners';
 import { getAllTracks } from '../../../lib/api';
 
-function TrackList({tracks, setTracks})
+function TrackList({ tracks, setTracks })
 {
     useEffect(() =>
     {
@@ -12,23 +12,31 @@ function TrackList({tracks, setTracks})
 
     return (
         <>
-            <div>TrackList</div>
-            <ul>
-                {
-                    tracks.length
-                    ?
-                    tracks.map((track, index) => 
+            <div className='trackContainer'>
+                <h2 style={ { color: "red" } } className="header">TrackList</h2>
+
+                <div className='trackList'>
                     {
-                        return (
-                            <li key={index}>
-                                <p>Title: {track.title}</p>
-                            </li>
-                        )
-                    })
-                    :
-                    <SyncLoader color='cyan' />
-                }
-            </ul>
+                        tracks.length
+                            ?
+                            tracks.map((track, index) => 
+                            {
+                                return (
+                                    <div className='trackCard'>
+                                        <p>Title: { track.title } by <span style={ { color: "red" } }>{ track.artist }</span></p>
+                                        <ul>
+                                            <li><button>Play</button></li>
+                                            <li><button>Play</button></li>
+                                            <li><button>Play</button></li>
+                                        </ul>
+                                    </div>
+                                )
+                            })
+                            :
+                            <SyncLoader color='cyan' />
+                    }
+                </div>
+            </div>
         </>
     )
 }

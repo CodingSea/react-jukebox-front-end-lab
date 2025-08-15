@@ -70,3 +70,13 @@
   flex-wrap: nowrap;
   gap: 0.5em;
 }
+
+.playingCard
+{
+  background-color: rgb(61, 61, 61);
+  border-radius: 1em;
+  padding: 1em;
+  text-align: start;
+  width: 40em;
+  margin: 1em auto;
+}
